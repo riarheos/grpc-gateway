@@ -251,7 +251,11 @@ var _ = metadata.Join
 
 	_ = template.Must(handlerTemplate.New("request-func-signature").Parse(strings.Replace(`
 {{if .Method.GetServerStreaming}}
-func request_{{.Method.Service.GetName}}_{{.Method.GetName}}_{{.Index}}(ctx context.Context, marshaler runtime.Marshaler, client {{.Method.Service.InstanceName}}Client, req *http.Request, pathParams map[string]string) (*errorable_{{.Method.Service.InstanceName}}_{{.Method.GetName}}Client, runtime.ServerMetadata, error)
+{{if .Method.GetClientStreaming}}
+func request_{{.Method.Service.GetName}}_{{.Method.GetName}}_{{.Index}}(ctx context.Context, marshaler runtime.Marshaler, client {{.Method.Service.InstanceName}}Client, req *http.Request, pathParams map[string]string) (*errorPassing_{{.Method.Service.InstanceName}}_{{.Method.GetName}}Client_{{.Index}}, runtime.ServerMetadata, error)
+{{else}}
+func request_{{.Method.Service.GetName}}_{{.Method.GetName}}_{{.Index}}(ctx context.Context, marshaler runtime.Marshaler, client {{.Method.Service.InstanceName}}Client, req *http.Request, pathParams map[string]string) ({{.Method.Service.InstanceName}}_{{.Method.GetName}}Client, runtime.ServerMetadata, error)
+{{end}}
 {{else}}
 func request_{{.Method.Service.GetName}}_{{.Method.GetName}}_{{.Index}}(ctx context.Context, marshaler runtime.Marshaler, client {{.Method.Service.InstanceName}}Client, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error)
 {{end}}`, "\n", "", -1)))
@@ -411,8 +415,7 @@ var (
 }`))
 
 	_ = template.Must(handlerTemplate.New("bidi-streaming-request-func").Parse(`
-
-type errorable_{{.Method.Service.InstanceName}}_{{.Method.GetName}}Client struct {
+type errorPassing_{{.Method.Service.InstanceName}}_{{.Method.GetName}}Client_{{.Index}} struct {
 	internalError error
 	{{.Method.Service.InstanceName}}_{{.Method.GetName}}Client
 }
@@ -424,7 +427,7 @@ type errorable_{{.Method.Service.InstanceName}}_{{.Method.GetName}}Client struct
 		grpclog.Infof("Failed to start streaming: %v", err)
 		return nil, metadata, err
 	}
-	e := errorable_{{.Method.Service.InstanceName}}_{{.Method.GetName}}Client{nil, stream}
+	e := errorPassing_{{.Method.Service.InstanceName}}_{{.Method.GetName}}Client_{{.Index}}{nil, stream}
 	dec := marshaler.NewDecoder(req.Body)
 	handleSend := func() error {
 		var protoReq {{.Method.RequestType.GoType .Method.Service.File.GoPkg.Path}}
@@ -702,6 +705,7 @@ func Register{{$svc.GetName}}{{$.RegisterFuncSuffix}}Client(ctx context.Context,
 			return response_{{$svc.GetName}}_{{$m.GetName}}_{{$b.Index}}{res}, err
 		}, mux.GetForwardResponseOptions()...)
 		{{ else }}
+		{{ if $m.GetClientStreaming }}
 		forward_{{$svc.GetName}}_{{$m.GetName}}_{{$b.Index}}(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) {
 			res, err := resp.Recv()
 			if resp.internalError != nil {
@@ -709,6 +713,9 @@ func Register{{$svc.GetName}}{{$.RegisterFuncSuffix}}Client(ctx context.Context,
 			}
 			return res, err
 		}, mux.GetForwardResponseOptions()...)
+		{{ else }}
+		forward_{{$svc.GetName}}_{{$m.GetName}}_{{$b.Index}}(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
+		{{ end }}
 		{{end}}
 		{{else}}
 		{{ if $b.ResponseBody }}

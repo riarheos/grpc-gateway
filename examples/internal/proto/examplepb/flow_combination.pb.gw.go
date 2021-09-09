@@ -49,7 +49,7 @@ func local_request_FlowCombination_RpcEmptyRpc_0(ctx context.Context, marshaler 
 
 }
 
-func request_FlowCombination_RpcEmptyStream_0(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (*errorable_FlowCombination_RpcEmptyStreamClient, runtime.ServerMetadata, error) {
+func request_FlowCombination_RpcEmptyStream_0(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (FlowCombination_RpcEmptyStreamClient, runtime.ServerMetadata, error) {
 	var protoReq EmptyProto
 	var metadata runtime.ServerMetadata
 
@@ -110,19 +110,19 @@ func request_FlowCombination_StreamEmptyRpc_0(ctx context.Context, marshaler run
 
 }
 
-type errorable_FlowCombination_StreamEmptyStreamClient struct {
+type errorPassing_FlowCombination_StreamEmptyStreamClient_0 struct {
 	internalError error
 	FlowCombination_StreamEmptyStreamClient
 }
 
-func request_FlowCombination_StreamEmptyStream_0(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (*errorable_FlowCombination_StreamEmptyStreamClient, runtime.ServerMetadata, error) {
+func request_FlowCombination_StreamEmptyStream_0(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (*errorPassing_FlowCombination_StreamEmptyStreamClient_0, runtime.ServerMetadata, error) {
 	var metadata runtime.ServerMetadata
 	stream, err := client.StreamEmptyStream(ctx)
 	if err != nil {
 		grpclog.Infof("Failed to start streaming: %v", err)
 		return nil, metadata, err
 	}
-	e := errorable_FlowCombination_StreamEmptyStreamClient{nil, stream}
+	e := errorPassing_FlowCombination_StreamEmptyStreamClient_0{nil, stream}
 	dec := marshaler.NewDecoder(req.Body)
 	handleSend := func() error {
 		var protoReq EmptyProto
@@ -951,7 +951,7 @@ func local_request_FlowCombination_RpcPathNestedRpc_2(ctx context.Context, marsh
 
 }
 
-func request_FlowCombination_RpcBodyStream_0(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (*errorable_FlowCombination_RpcBodyStreamClient, runtime.ServerMetadata, error) {
+func request_FlowCombination_RpcBodyStream_0(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (FlowCombination_RpcBodyStreamClient, runtime.ServerMetadata, error) {
 	var protoReq NonEmptyProto
 	var metadata runtime.ServerMetadata
 
@@ -976,7 +976,7 @@ func request_FlowCombination_RpcBodyStream_0(ctx context.Context, marshaler runt
 
 }
 
-func request_FlowCombination_RpcBodyStream_1(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (*errorable_FlowCombination_RpcBodyStreamClient, runtime.ServerMetadata, error) {
+func request_FlowCombination_RpcBodyStream_1(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (FlowCombination_RpcBodyStreamClient, runtime.ServerMetadata, error) {
 	var protoReq NonEmptyProto
 	var metadata runtime.ServerMetadata
 
@@ -1034,7 +1034,7 @@ var (
 	filter_FlowCombination_RpcBodyStream_2 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
-func request_FlowCombination_RpcBodyStream_2(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (*errorable_FlowCombination_RpcBodyStreamClient, runtime.ServerMetadata, error) {
+func request_FlowCombination_RpcBodyStream_2(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (FlowCombination_RpcBodyStreamClient, runtime.ServerMetadata, error) {
 	var protoReq NonEmptyProto
 	var metadata runtime.ServerMetadata
 
@@ -1058,7 +1058,7 @@ func request_FlowCombination_RpcBodyStream_2(ctx context.Context, marshaler runt
 
 }
 
-func request_FlowCombination_RpcBodyStream_3(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (*errorable_FlowCombination_RpcBodyStreamClient, runtime.ServerMetadata, error) {
+func request_FlowCombination_RpcBodyStream_3(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (FlowCombination_RpcBodyStreamClient, runtime.ServerMetadata, error) {
 	var protoReq NonEmptyProto
 	var metadata runtime.ServerMetadata
 
@@ -1114,7 +1114,7 @@ var (
 	filter_FlowCombination_RpcBodyStream_4 = &utilities.DoubleArray{Encoding: map[string]int{"c": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
-func request_FlowCombination_RpcBodyStream_4(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (*errorable_FlowCombination_RpcBodyStreamClient, runtime.ServerMetadata, error) {
+func request_FlowCombination_RpcBodyStream_4(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (FlowCombination_RpcBodyStreamClient, runtime.ServerMetadata, error) {
 	var protoReq NonEmptyProto
 	var metadata runtime.ServerMetadata
 
@@ -1150,7 +1150,7 @@ var (
 	filter_FlowCombination_RpcBodyStream_5 = &utilities.DoubleArray{Encoding: map[string]int{"c": 0, "a": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
-func request_FlowCombination_RpcBodyStream_5(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (*errorable_FlowCombination_RpcBodyStreamClient, runtime.ServerMetadata, error) {
+func request_FlowCombination_RpcBodyStream_5(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (FlowCombination_RpcBodyStreamClient, runtime.ServerMetadata, error) {
 	var protoReq NonEmptyProto
 	var metadata runtime.ServerMetadata
 
@@ -1203,7 +1203,7 @@ var (
 	filter_FlowCombination_RpcBodyStream_6 = &utilities.DoubleArray{Encoding: map[string]int{"a": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
-func request_FlowCombination_RpcBodyStream_6(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (*errorable_FlowCombination_RpcBodyStreamClient, runtime.ServerMetadata, error) {
+func request_FlowCombination_RpcBodyStream_6(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (FlowCombination_RpcBodyStreamClient, runtime.ServerMetadata, error) {
 	var protoReq NonEmptyProto
 	var metadata runtime.ServerMetadata
 
@@ -1248,7 +1248,7 @@ var (
 	filter_FlowCombination_RpcPathSingleNestedStream_0 = &utilities.DoubleArray{Encoding: map[string]int{"a": 0, "str": 1}, Base: []int{1, 1, 1, 0}, Check: []int{0, 1, 2, 3}}
 )
 
-func request_FlowCombination_RpcPathSingleNestedStream_0(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (*errorable_FlowCombination_RpcPathSingleNestedStreamClient, runtime.ServerMetadata, error) {
+func request_FlowCombination_RpcPathSingleNestedStream_0(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (FlowCombination_RpcPathSingleNestedStreamClient, runtime.ServerMetadata, error) {
 	var protoReq SingleNestedProto
 	var metadata runtime.ServerMetadata
 
@@ -1293,7 +1293,7 @@ var (
 	filter_FlowCombination_RpcPathNestedStream_0 = &utilities.DoubleArray{Encoding: map[string]int{"c": 0, "a": 1, "str": 2, "b": 3}, Base: []int{1, 1, 1, 2, 3, 0, 0, 0}, Check: []int{0, 1, 1, 3, 1, 2, 4, 5}}
 )
 
-func request_FlowCombination_RpcPathNestedStream_0(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (*errorable_FlowCombination_RpcPathNestedStreamClient, runtime.ServerMetadata, error) {
+func request_FlowCombination_RpcPathNestedStream_0(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (FlowCombination_RpcPathNestedStreamClient, runtime.ServerMetadata, error) {
 	var protoReq NestedProto
 	var metadata runtime.ServerMetadata
 
@@ -1356,7 +1356,7 @@ var (
 	filter_FlowCombination_RpcPathNestedStream_1 = &utilities.DoubleArray{Encoding: map[string]int{"a": 0, "str": 1}, Base: []int{1, 1, 1, 0}, Check: []int{0, 1, 2, 3}}
 )
 
-func request_FlowCombination_RpcPathNestedStream_1(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (*errorable_FlowCombination_RpcPathNestedStreamClient, runtime.ServerMetadata, error) {
+func request_FlowCombination_RpcPathNestedStream_1(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (FlowCombination_RpcPathNestedStreamClient, runtime.ServerMetadata, error) {
 	var protoReq NestedProto
 	var metadata runtime.ServerMetadata
 
@@ -1401,7 +1401,7 @@ var (
 	filter_FlowCombination_RpcPathNestedStream_2 = &utilities.DoubleArray{Encoding: map[string]int{"c": 0, "a": 1, "str": 2}, Base: []int{1, 1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 3, 2, 4}}
 )
 
-func request_FlowCombination_RpcPathNestedStream_2(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (*errorable_FlowCombination_RpcPathNestedStreamClient, runtime.ServerMetadata, error) {
+func request_FlowCombination_RpcPathNestedStream_2(ctx context.Context, marshaler runtime.Marshaler, client FlowCombinationClient, req *http.Request, pathParams map[string]string) (FlowCombination_RpcPathNestedStreamClient, runtime.ServerMetadata, error) {
 	var protoReq NestedProto
 	var metadata runtime.ServerMetadata
 
@@ -1907,13 +1907,7 @@ func RegisterFlowCombinationHandlerClient(ctx context.Context, mux *runtime.Serv
 			return
 		}
 
-		forward_FlowCombination_RpcEmptyStream_0(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) {
-			res, err := resp.Recv()
-			if resp.internalError != nil {
-				return res, resp.internalError
-			}
-			return res, err
-		}, mux.GetForwardResponseOptions()...)
+		forward_FlowCombination_RpcEmptyStream_0(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -2199,13 +2193,7 @@ func RegisterFlowCombinationHandlerClient(ctx context.Context, mux *runtime.Serv
 			return
 		}
 
-		forward_FlowCombination_RpcBodyStream_0(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) {
-			res, err := resp.Recv()
-			if resp.internalError != nil {
-				return res, resp.internalError
-			}
-			return res, err
-		}, mux.GetForwardResponseOptions()...)
+		forward_FlowCombination_RpcBodyStream_0(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -2225,13 +2213,7 @@ func RegisterFlowCombinationHandlerClient(ctx context.Context, mux *runtime.Serv
 			return
 		}
 
-		forward_FlowCombination_RpcBodyStream_1(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) {
-			res, err := resp.Recv()
-			if resp.internalError != nil {
-				return res, resp.internalError
-			}
-			return res, err
-		}, mux.GetForwardResponseOptions()...)
+		forward_FlowCombination_RpcBodyStream_1(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -2251,13 +2233,7 @@ func RegisterFlowCombinationHandlerClient(ctx context.Context, mux *runtime.Serv
 			return
 		}
 
-		forward_FlowCombination_RpcBodyStream_2(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) {
-			res, err := resp.Recv()
-			if resp.internalError != nil {
-				return res, resp.internalError
-			}
-			return res, err
-		}, mux.GetForwardResponseOptions()...)
+		forward_FlowCombination_RpcBodyStream_2(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -2277,13 +2253,7 @@ func RegisterFlowCombinationHandlerClient(ctx context.Context, mux *runtime.Serv
 			return
 		}
 
-		forward_FlowCombination_RpcBodyStream_3(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) {
-			res, err := resp.Recv()
-			if resp.internalError != nil {
-				return res, resp.internalError
-			}
-			return res, err
-		}, mux.GetForwardResponseOptions()...)
+		forward_FlowCombination_RpcBodyStream_3(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -2303,13 +2273,7 @@ func RegisterFlowCombinationHandlerClient(ctx context.Context, mux *runtime.Serv
 			return
 		}
 
-		forward_FlowCombination_RpcBodyStream_4(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) {
-			res, err := resp.Recv()
-			if resp.internalError != nil {
-				return res, resp.internalError
-			}
-			return res, err
-		}, mux.GetForwardResponseOptions()...)
+		forward_FlowCombination_RpcBodyStream_4(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -2329,13 +2293,7 @@ func RegisterFlowCombinationHandlerClient(ctx context.Context, mux *runtime.Serv
 			return
 		}
 
-		forward_FlowCombination_RpcBodyStream_5(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) {
-			res, err := resp.Recv()
-			if resp.internalError != nil {
-				return res, resp.internalError
-			}
-			return res, err
-		}, mux.GetForwardResponseOptions()...)
+		forward_FlowCombination_RpcBodyStream_5(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -2355,13 +2313,7 @@ func RegisterFlowCombinationHandlerClient(ctx context.Context, mux *runtime.Serv
 			return
 		}
 
-		forward_FlowCombination_RpcBodyStream_6(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) {
-			res, err := resp.Recv()
-			if resp.internalError != nil {
-				return res, resp.internalError
-			}
-			return res, err
-		}, mux.GetForwardResponseOptions()...)
+		forward_FlowCombination_RpcBodyStream_6(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -2381,13 +2333,7 @@ func RegisterFlowCombinationHandlerClient(ctx context.Context, mux *runtime.Serv
 			return
 		}
 
-		forward_FlowCombination_RpcPathSingleNestedStream_0(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) {
-			res, err := resp.Recv()
-			if resp.internalError != nil {
-				return res, resp.internalError
-			}
-			return res, err
-		}, mux.GetForwardResponseOptions()...)
+		forward_FlowCombination_RpcPathSingleNestedStream_0(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -2407,13 +2353,7 @@ func RegisterFlowCombinationHandlerClient(ctx context.Context, mux *runtime.Serv
 			return
 		}
 
-		forward_FlowCombination_RpcPathNestedStream_0(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) {
-			res, err := resp.Recv()
-			if resp.internalError != nil {
-				return res, resp.internalError
-			}
-			return res, err
-		}, mux.GetForwardResponseOptions()...)
+		forward_FlowCombination_RpcPathNestedStream_0(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -2433,13 +2373,7 @@ func RegisterFlowCombinationHandlerClient(ctx context.Context, mux *runtime.Serv
 			return
 		}
 
-		forward_FlowCombination_RpcPathNestedStream_1(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) {
-			res, err := resp.Recv()
-			if resp.internalError != nil {
-				return res, resp.internalError
-			}
-			return res, err
-		}, mux.GetForwardResponseOptions()...)
+		forward_FlowCombination_RpcPathNestedStream_1(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -2459,13 +2393,7 @@ func RegisterFlowCombinationHandlerClient(ctx context.Context, mux *runtime.Serv
 			return
 		}
 
-		forward_FlowCombination_RpcPathNestedStream_2(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) {
-			res, err := resp.Recv()
-			if resp.internalError != nil {
-				return res, resp.internalError
-			}
-			return res, err
-		}, mux.GetForwardResponseOptions()...)
+		forward_FlowCombination_RpcPathNestedStream_2(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 
 	})
 
